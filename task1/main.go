@@ -81,7 +81,7 @@ func fetchGithub(path string, target any) error {
 	case http.StatusNotFound:
 		return errors.New("repository not found")
 	default:
-		return errors.New("bad response from server")
+		return fmt.Errorf("bad response from server: code %d", res.StatusCode)
 	}
 
 	if err := json.NewDecoder(res.Body).Decode(target); err != nil {
