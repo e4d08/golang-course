@@ -12,5 +12,7 @@
 `go build`
 ### Запуск
 Для запуска необходимо передать утилите в качестве единственного аргумента ссылку на любую страницу репозитория:
+
 `gh-anal https://github.com/<owner>/<name>/...`
+
 `gh-anal https://github.com/hyprwm/Hyprland/pull/13636`
