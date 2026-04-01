@@ -14,6 +14,17 @@ import (
 	"github.com/joho/godotenv"
 )
 
+//	@title			Gateway API
+//	@version		1.0
+//	@description	Gateway for the Collector service which can fetch information about GitHub repositories.
+
+//	@license.url	https://unlicense.org
+
+//	@host		localhost:8080
+//	@BasePath	/
+
+// @externalDocs.description	OpenAPI Specification
+// @externalDocs.url			https://swagger.io/resources/open-api/
 func main() {
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Failed to load .env")

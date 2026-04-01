@@ -1,0 +1,72 @@
+basePath: /
+definitions:
+  internal_handler_http.ErrorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  internal_handler_http.GetRepositoryResponse:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      forks_count:
+        type: integer
+      license:
+        type: string
+      name:
+        type: string
+      stargazers_count:
+        type: integer
+    type: object
+externalDocs:
+  description: OpenAPI Specification
+  url: https://swagger.io/resources/open-api/
+host: localhost:8080
+info:
+  contact: {}
+  description: Gateway for the Collector service which can fetch information about
+    GitHub repositories.
+  license:
+    url: https://unlicense.org
+  title: Gateway API
+  version: "1.0"
+paths:
+  /repository/get:
+    get:
+      consumes:
+      - application/json
+      description: get GitHub repository information by its owner and name
+      parameters:
+      - description: Repository owner
+        in: query
+        name: owner
+        required: true
+        type: string
+      - description: Repository name
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_handler_http.GetRepositoryResponse'
+        "400":
+          description: Bad parameters
+          schema:
+            $ref: '#/definitions/internal_handler_http.ErrorResponse'
+        "404":
+          description: Repository not found
+          schema:
+            $ref: '#/definitions/internal_handler_http.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_handler_http.ErrorResponse'
+      summary: Get repository by owner and name
+swagger: "2.0"

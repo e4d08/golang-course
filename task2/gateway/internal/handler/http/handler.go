@@ -30,6 +30,19 @@ func (h *Handler) WriteError(w http.ResponseWriter, status int, message string) 
 	h.WriteJson(w, status, resp)
 }
 
+// GetRepository godoc
+//
+//	@Summary		Get repository by owner and name
+//	@Description	get GitHub repository information by its owner and name
+//	@Accept			json
+//	@Produce		json
+//	@Param			owner	query		string	true	"Repository owner"
+//	@Param			name	query		string	true	"Repository name"
+//	@Success		200		{object}	GetRepositoryResponse
+//	@Failure		400		{object}	ErrorResponse	"Bad parameters"
+//	@Failure		404		{object}	ErrorResponse	"Repository not found"
+//	@Failure		500		{object}	ErrorResponse	"Internal server error"
+//	@Router			/repository/get [get]
 func (h *Handler) GetRepository(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
