@@ -48,25 +48,25 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/internal_handler_http.GetRepositoryResponse"
+                            "$ref": "#/definitions/http.GetRepositoryResponse"
                         }
                     },
                     "400": {
                         "description": "Bad parameters",
                         "schema": {
-                            "$ref": "#/definitions/internal_handler_http.ErrorResponse"
+                            "$ref": "#/definitions/http.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Repository not found",
                         "schema": {
-                            "$ref": "#/definitions/internal_handler_http.ErrorResponse"
+                            "$ref": "#/definitions/http.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal server error",
                         "schema": {
-                            "$ref": "#/definitions/internal_handler_http.ErrorResponse"
+                            "$ref": "#/definitions/http.ErrorResponse"
                         }
                     }
                 }
@@ -74,7 +74,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "internal_handler_http.ErrorResponse": {
+        "http.ErrorResponse": {
             "type": "object",
             "properties": {
                 "message": {
@@ -82,7 +82,7 @@ const docTemplate = `{
                 }
             }
         },
-        "internal_handler_http.GetRepositoryResponse": {
+        "http.GetRepositoryResponse": {
             "type": "object",
             "properties": {
                 "created_at": {
