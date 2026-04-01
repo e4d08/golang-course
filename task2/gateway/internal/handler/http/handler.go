@@ -26,7 +26,7 @@ func (h *Handler) WriteJson(w http.ResponseWriter, status int, data any) {
 }
 
 func (h *Handler) WriteError(w http.ResponseWriter, status int, message string) {
-	resp := ErrorResponse{Message: message}
+	resp := ErrorResponse{Error: message}
 	h.WriteJson(w, status, resp)
 }
 
