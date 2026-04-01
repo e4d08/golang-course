@@ -27,6 +27,8 @@ func (a *HttpAdapter) FetchRepository(ctx context.Context, owner string, name st
 	if err != nil {
 		return domain.Repository{}, domain.ErrInternal
 	}
+	defer resp.Body.Close()
+
 	switch resp.StatusCode {
 	case 200:
 	case 404:
