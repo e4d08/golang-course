@@ -22,9 +22,9 @@ func main() {
 	adapter := http.NewHttpAdapter(os.Getenv("GITHUB_API"))
 	collector := usecase.NewCollectorService(adapter)
 
-	port, err := strconv.Atoi(os.Getenv("GRPC_PORT"))
+	port, err := strconv.Atoi(os.Getenv("PORT"))
 	if err != nil {
-		log.Fatal("Failed to read GRPC_PORT from .env")
+		log.Fatal("Failed to read PORT from .env")
 	}
 
 	grpcServer := grpc.NewServer(port, collector)
