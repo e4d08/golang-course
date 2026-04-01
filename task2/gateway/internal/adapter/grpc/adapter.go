@@ -12,12 +12,12 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type GrpcAdapter struct {
+type GRPCAdapter struct {
 	conn   *grpc.ClientConn
 	client pb.CollectorServiceClient
 }
 
-func NewGrpcAdapter(address string) (*GrpcAdapter, error) {
+func NewGRPCAdapter(address string) (*GRPCAdapter, error) {
 	conn, err := grpc.NewClient(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return nil, fmt.Errorf("dial grpc: %w", err)
@@ -25,10 +25,10 @@ func NewGrpcAdapter(address string) (*GrpcAdapter, error) {
 
 	client := pb.NewCollectorServiceClient(conn)
 
-	return &GrpcAdapter{conn: conn, client: client}, nil
+	return &GRPCAdapter{conn: conn, client: client}, nil
 }
 
-func (a *GrpcAdapter) GetRepository(ctx context.Context, owner string, name string) (domain.Repository, error) {
+func (a *GRPCAdapter) GetRepository(ctx context.Context, owner string, name string) (domain.Repository, error) {
 	req := &pb.GetRepositoryRequest{
 		Owner: owner,
 		Name:  name,
@@ -63,6 +63,6 @@ func (a *GrpcAdapter) GetRepository(ctx context.Context, owner string, name stri
 	}, nil
 }
 
-func (a *GrpcAdapter) Close() {
+func (a *GRPCAdapter) Close() {
 	a.conn.Close()
 }

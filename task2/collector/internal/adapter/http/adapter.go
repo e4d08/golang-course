@@ -10,19 +10,19 @@ import (
 	"time"
 )
 
-type HttpAdapter struct {
+type HTTPAdapter struct {
 	client *http.Client
 	apiUrl string
 }
 
-func NewHttpAdapter(apiUrl string) *HttpAdapter {
-	return &HttpAdapter{
+func NewHTTPAdapter(apiUrl string) *HTTPAdapter {
+	return &HTTPAdapter{
 		client: &http.Client{Timeout: 5 * time.Second},
 		apiUrl: apiUrl,
 	}
 }
 
-func (a *HttpAdapter) FetchRepository(ctx context.Context, owner string, name string) (domain.Repository, error) {
+func (a *HTTPAdapter) FetchRepository(ctx context.Context, owner string, name string) (domain.Repository, error) {
 	resp, err := a.client.Get(fmt.Sprintf("%s/%s/%s", a.apiUrl, owner, name))
 	if err != nil {
 		return domain.Repository{}, domain.ErrInternal

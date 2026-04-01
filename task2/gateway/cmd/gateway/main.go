@@ -35,7 +35,7 @@ func main() {
 		log.Fatal("Failed to read PORT from .env")
 	}
 
-	adapter, err := adapter.NewGrpcAdapter(os.Getenv("GRPC_ADDRESS"))
+	adapter, err := adapter.NewGRPCAdapter(os.Getenv("GRPC_ADDRESS"))
 	if err != nil {
 		log.Fatalf("Failed to init grpc adapter: %v", err)
 	}

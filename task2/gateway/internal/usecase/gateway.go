@@ -7,10 +7,10 @@ import (
 )
 
 type GatewayService struct {
-	collector *adapter.GrpcAdapter
+	collector *adapter.GRPCAdapter
 }
 
-func NewGatewayService(collector *adapter.GrpcAdapter) *GatewayService {
+func NewGatewayService(collector *adapter.GRPCAdapter) *GatewayService {
 	return &GatewayService{collector: collector}
 }
 

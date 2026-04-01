@@ -19,7 +19,7 @@ func main() {
 		log.Fatal("Failed to load .env")
 	}
 
-	adapter := http.NewHttpAdapter(os.Getenv("GITHUB_API"))
+	adapter := http.NewHTTPAdapter(os.Getenv("GITHUB_API"))
 	collector := usecase.NewCollectorService(adapter)
 
 	port, err := strconv.Atoi(os.Getenv("PORT"))
